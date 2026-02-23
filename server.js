@@ -9,7 +9,12 @@ const rateLimit = require("express-rate-limit");
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-app.use(cors());
+app.use(cors(
+    {
+        origin: "https://city-data-org.vercel.app" || "http://localhost:5173",
+        credentials: true
+    }
+));
 app.use(express.json());
 
 const apiLimiter = rateLimit({
